@@ -2,7 +2,7 @@ The backend part of the Task manager project using Python Flask to create a simp
 Includes:
 - core functionality to view, add, delete and update tasks
 - validation for POST, PATCH and DELETE requests
-- intergation tests for endpoints and validation
+- intergation tests for endpoints and error messages
 
   Instructions on running the app:
   1. python3 -m venv
