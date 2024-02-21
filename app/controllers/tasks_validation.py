@@ -5,22 +5,21 @@ from flask import jsonify, make_response, abort, request
 def validate_task_post_request(request):
     request_body = request.get_json()
 
-    if request.method == "POST":
-        if "title" not in request_body or request_body["title"] == "":
-            abort(make_response(jsonify(
-                {
-                    "details": "Please enter a valid task title!"
-                }), 400))
-        if "description" not in request_body or request_body["description"] == "":
-            abort(make_response(jsonify(
-                {
-                    "details": "Please enter a valid task description!"
-                }), 400))
-        completed = request_body["completed"] if "completed" in request_body else False
-        task = Task(
-            title=request_body["title"],
-            description=request_body["description"],
-            completed=completed)
+    if "title" not in request_body or request_body["title"] == "":
+        abort(make_response(jsonify(
+            {
+                "details": "Please enter a valid task title!"
+            }), 400))
+    if "description" not in request_body or request_body["description"] == "":
+        abort(make_response(jsonify(
+            {
+                "details": "Please enter a valid task description!"
+            }), 400))
+    completed = request_body["completed"] if "completed" in request_body else False
+    task = Task(
+        title=request_body["title"],
+        description=request_body["description"],
+        completed=completed)
     return task
 
 

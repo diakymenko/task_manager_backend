@@ -2,7 +2,6 @@ from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
-
 db = SQLAlchemy()
 
 
@@ -18,13 +17,10 @@ def create_app(test_config=None):
         app.config.update(test_config)
     db.init_app(app)
 
-    # TODO: what is this?
     with app.app_context():
         from .controllers.tasks import tasks_bp
         app.register_blueprint(tasks_bp)
 
         db.create_all()
-
-
 
     return app
